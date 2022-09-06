@@ -4,6 +4,7 @@ const express = require("express");
 
 // Require the 'db.json' file and store in 'notes'
 
+
 // Use Express to intialize the 'app' server
 const app = express();
 
@@ -24,3 +25,7 @@ const app = express();
 
 // Use the 'app' to 'listen' to specific 'PORT'
 
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () =>
+  console.log(`Note App listening at http://localhost:${PORT}`)
+);

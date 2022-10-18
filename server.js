@@ -25,7 +25,7 @@ res.sendFile(path.join(__dirname, 'db/db.json'))
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
-app.usee('/', routes);
+app.use('/', routes);
 
 // Use the 'app' to 'listen' to specific 'PORT'
 

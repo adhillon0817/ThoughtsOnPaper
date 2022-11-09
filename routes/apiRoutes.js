@@ -1,7 +1,12 @@
+const express = require('express');
 const fs = require('fs');
 const path = require('path');
 const data = require ('../db/db.json');
 const {v4: uuidv4} = require('uuid');
+
+const app = express()
+
+app.use(express.Router());
 
 module.exports=(app) => {
     app.get('/app/notes', (req, res) => {

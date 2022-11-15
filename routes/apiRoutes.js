@@ -13,6 +13,7 @@ module.exports=(app) => {
 
     app.post('/notes', (req,res) => {
         let db = fs.readFileSync('./db/db.json');
+        
         res.json(db);
 
         if (req.body){
@@ -21,9 +22,13 @@ module.exports=(app) => {
                 title: req.body.title,
                 text: req.body.text
             };
+            console.log(note);
         }
     })
-    //app.delete
+
+    app.delete('/', (req, res) => {
+        res.send("Note Deleted")
+    })
 
 }
 

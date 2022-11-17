@@ -3,15 +3,22 @@ const path = require('path');
 const data = require ('../db/db.json');
 const {v4: uuidv4} = require('uuid');
 
+const {
+    readFromFile,
+    readAndAppend,
+    writeToFile,
+  } = require('../helpers/fsUtils');
+  
+
 const app = router("express").Router();
 
 
 module.exports=(app) => {
-    router.get('/notes', (req, res) => {
+    app.get('/notes', (req, res) => {
         res.sendFile(path.join(_dirname, '../db/db.json'));
     });
 
-    router.post('/notes', (req,res) => {
+    app.post('/notes', (req,res) => {
         let db = fs.readFileSync('./db/db.json');
         
         res.json(db);
@@ -22,12 +29,12 @@ module.exports=(app) => {
                 title: req.body.title,
                 text: req.body.text
             };
-            readAndAppend(db, './db/db.json');
-            res.send('db added')
         }
     });
 
-
+    app.get('/notes', (req,res) => {
+        
+    })
 
 }
 

@@ -8,11 +8,11 @@ const {
     readFromFile,
     readAndAppend,
     writeToFile,
-  } = require('../helpers/');
+  } = require('../helpers');
   
 
     app.get('/notes', (req, res) => {
-        res.sendFile(path.join(_dirname, '../db/db.json'));
+        readFromFile('./db/db.json').then((data) => res.join(JSON.parse(data)));
     });
 
 

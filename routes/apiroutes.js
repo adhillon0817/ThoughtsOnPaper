@@ -20,8 +20,8 @@ router.post("/notes", (req, res) => {
 
     if (title && text) {
         const newNote = {
-            title,
-            text,
+            title: title,
+            text: text,
         };
 
 

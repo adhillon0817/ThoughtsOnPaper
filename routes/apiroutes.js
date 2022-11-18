@@ -1,17 +1,19 @@
 const router = require('express').Router();
 const { response } = require('express');
 const path = require('path');
+const { readFromFile, readAndAppend } = require("../helpers/fsUtils");
 
 
 //GET /api/notes should read the db.json file (day 1?)
 
    //res.json()
-app.get('/api/notes', (req, res) => {
-    res.status(200).json(notes);
-})
+router.get("/notes", (req, res) => {
+    readFromFile("./db/db.json").then((data) => res.join(JSON.parse(data)));
+
+});
 //POST/api/notes should recieve a new note to save on the request body, add it to the db.json file (day 2)
 
-app.post('/api/notes', (req, res) =>{
+app.post("/notes", (req, res) =>{
     console.info(`${req.method} received`);
 
     const {title, test} = req.body;
@@ -23,34 +25,42 @@ app.post('/api/notes', (req, res) =>{
         };
 
 
-    notes.push(newNote);
+readAndAppend(newNote, "./db/db.json");
+res.status(200).json("added new note!");
+    }else {
+        res.status(500).json("Error");
 
-    const noteString = JSON.stringify(notes);
-
-    //fs.writeFile 
-
-    fs.write(`./db/db.json`, noteString, (err) => {
-        err
-        ? console.error(err)
-        : console.log(
-            `New note written`
-        )
-
-    });
-
-    const response = {
-        status: 'Done',
-        body: newNote,
-    };
-
-    console.log(response);
-    res.status(201).json(response);
-} else{
-    res.status(500).json('Error')
-
-}
-
+    }
 });
+
+//     notes.push(newNote);
+
+//     const noteString = JSON.stringify(notes);
+
+//     //fs.writeFile 
+
+//     fs.write(`./db/db.json`, noteString, (err) => {
+//         err
+//         ? console.error(err)
+//         : console.log(
+//             `New note written`
+//         )
+
+//     });
+
+//     const response = {
+//         status: 'Done',
+//         body: newNote,
+//     };
+
+//     console.log(response);
+//     res.status(201).json(response);
+// } else{
+//     res.status(500).json('Error')
+
+// }
+
+// });
 
 // Return the new note to the client 
 

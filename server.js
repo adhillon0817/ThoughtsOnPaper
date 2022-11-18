@@ -57,10 +57,21 @@ app.post('/api/notes', (req, res) => {
       text,
     };
 
-    notes.push(dbNote);
+    note.push(dbNote);
 };
 
-const noteString = JSON.stringify(notes);
+const textString = JSON.stringify(note);
+
+fs.writeFile(`./db/db.json`, textString, (err) =>
+
+err 
+? console.error(err)
+: console.log(
+  `new note`
+)
+);
+
+
 
 app.get('/', (req,res) {
   res.sendFile(path.join(_direname, 'public/index.html'))

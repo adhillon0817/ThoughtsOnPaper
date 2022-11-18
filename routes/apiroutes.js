@@ -13,10 +13,10 @@ router.get("/notes", (req, res) => {
 });
 //POST/api/notes should recieve a new note to save on the request body, add it to the db.json file (day 2)
 
-app.post("/notes", (req, res) =>{
+router.post("/notes", (req, res) =>{
     console.info(`${req.method} received`);
 
-    const {title, test} = req.body;
+    const {title, text} = req.body;
 
     if (title && text) {
         const newNote = {
@@ -25,7 +25,6 @@ app.post("/notes", (req, res) =>{
         };
 
 
-readAndAppend(newNote, "./db/db.json");
 res.status(200).json("added new note!");
     }else {
         res.status(500).json("Error");

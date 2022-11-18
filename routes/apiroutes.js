@@ -33,6 +33,10 @@ res.status(200).json("added new note!");
     }
 });
 
+
+
+module.exports = router;
+
 //     notes.push(newNote);
 
 //     const noteString = JSON.stringify(notes);
@@ -64,4 +68,3 @@ res.status(200).json("added new note!");
 
 // Return the new note to the client 
 
-module.exports = router;

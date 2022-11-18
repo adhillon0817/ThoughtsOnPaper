@@ -9,8 +9,8 @@ const path = require('path');
 
 const app = express();
 
-const apiRoutes = require('./routes/apiRoutes');
-const htmlRoutes = require('./routes/htmlRoutes');
+// const apiRoutes = require('./routes/apiRoutes');
+// const htmlRoutes = require('./routes/htmlRoutes');
 
 // Set up port
 const PORT = process.env.PORT || 3001;
@@ -40,12 +40,31 @@ app.get('/api/notes', (req, res) => {
   res.status(200).json(notes);
 });
 
-app.get('/notes', (req,res) =>
+app.get('/notes', (req, res) =>
 res.sendFile(path.join(_direname, 'public/notes.html'))
 );
 
 
+app.post('/api/notes', (req, res) => {
+  console.info (`${req.method} note added!`);
+  
 
+  const { title, text } = req.body;
+
+  if(req.body){
+    const dbNote = {
+      title,
+      text,
+    };
+
+    notes.push(dbNote);
+};
+
+const noteString = JSON.stringify(notes);
+
+app.get('/', (req,res) {
+  res.sendFile(path.join(_direname, 'public/index.html'))
+});
 
 // Use the 'app' to 'listen' to specific 'PORT'
 

@@ -5,21 +5,26 @@ const express = require("express");
 // const uuid = require('./helpers/uuid');
 // const notes = require('./db/db.json');
 // const fs = require('fs')
-const htmlRoutes = require('./routes/htmlroutes');
-const apiRoutes = require('./routes/apiroutes')
+const htmlRoutes = require("./routes/htmlroutes");
+const apiRoutes = require("./routes/apiroutes")
 
 const PORT = process.env.PORT || 3001;
 
 
 const app = express();
 
-app.use(express.static('public'));
+app.use(express.static("public"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
 app.use('/api', apiRoutes)
 app.use('/', htmlRoutes)
+
+
+app.listen(PORT, () => {
+  console.log(`Note App listening at http://localhost:${PORT}`)
+});
 
 // app.get('/notes', (req, res) =>
 // res.sendFile(path.join(_direname, 'public/notes.html'))
@@ -78,6 +83,3 @@ app.use('/', htmlRoutes)
 
 // Use the 'app' to 'listen' to specific 'PORT'
 
-app.listen(PORT, () => {
-  console.log(`Note App listening at http://localhost:${PORT}`)
-});

@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const { response } = require('express');
 const path = require('path');
-const { brotliDecompressSync } = require('zlib');
 
 
 //GET /api/notes should read the db.json file (day 1?)

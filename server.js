@@ -71,6 +71,11 @@ err
 )
 );
 
+const response = {
+  status: 'successful',
+  body: newNote,
+};
+
 
 
 app.get('/', (req,res) {

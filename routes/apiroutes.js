@@ -8,7 +8,7 @@ const { readFromFile, readAndAppend } = require("../helpers/fsUtils");
 
    //res.json()
 router.get("/notes", (req, res) => {
-    readFromFile("./db/db.json").then((data) => res.join(JSON.parse
+    readFromFile("./db/db.json").then((data) => res.json(JSON.parse
     (data)));
 });
 //POST/api/notes should recieve a new note to save on the request body, add it to the db.json file (day 2)

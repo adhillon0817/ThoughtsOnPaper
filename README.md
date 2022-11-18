@@ -3,6 +3,9 @@
 ## Overview 
 The point of this project is to create a app where one can write and save their notes. This application is named ThoughtsOnPaper. In this app you will see that Express.js is used in the back end in order to help save and access notes from the JSON file.
 
+## Clipping
+![Demo Picture](ThoughtsOnPaper.png)
+
 ## User Story
 
 ```

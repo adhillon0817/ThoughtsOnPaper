@@ -1,5 +1,9 @@
 // Require Express and assign variables. 
 const express = require("express");
+const note = require('./db/db.json');
+const fs = require('fs')
+const path = require('path');
+
 
 // const path = require('path');
 
@@ -10,6 +14,7 @@ const htmlRoutes = require('./routes/htmlRoutes');
 
 // Set up port
 const PORT = process.env.PORT || 3001;
+
 
 
 
@@ -28,8 +33,13 @@ const PORT = process.env.PORT || 3001;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
-app.use('/api', apiRoutes);
-app.use('/', htmlRoutes);
+// app.use('/api', apiRoutes);
+// app.use('/', htmlRoutes);
+
+
+app.get('/notes', (req,res) =>
+res.sendFile(path.join(_direname, 'public/notes.html'))
+);
 
 
 // Use the 'app' to 'listen' to specific 'PORT'

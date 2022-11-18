@@ -36,10 +36,15 @@ app.use(express.static('public'));
 // app.use('/api', apiRoutes);
 // app.use('/', htmlRoutes);
 
+app.get('/api/notes', (req, res) => {
+  res.status(200).json(notes);
+});
 
 app.get('/notes', (req,res) =>
 res.sendFile(path.join(_direname, 'public/notes.html'))
 );
+
+
 
 
 // Use the 'app' to 'listen' to specific 'PORT'

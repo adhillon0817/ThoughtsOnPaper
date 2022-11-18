@@ -5,6 +5,7 @@ The point of this project is to create a app where one can write and save their 
 
 ## Clipping
 ![Demo Picture](ThoughtsOnPaper.png)
+https://drive.google.com/file/d/1uW397ntMDOXz7zGmkyFZsj_imZ4AKo13/view 
 
 ## User Story
 

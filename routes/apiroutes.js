@@ -8,15 +8,15 @@ const { readFromFile, readAndAppend } = require("../helpers/fsUtils");
 
    //res.json()
 router.get("/notes", (req, res) => {
-    readFromFile("./db/db.json").then((data) => res.join(JSON.parse(data)));
-
+    readFromFile("./db/db.json").then((data) => res.join(JSON.parse
+    (data)));
 });
 //POST/api/notes should recieve a new note to save on the request body, add it to the db.json file (day 2)
 
-router.post("/notes", (req, res) =>{
+router.post("/notes", (req, res) => {
     console.info(`${req.method} received`);
 
-    const {title, text} = req.body;
+    const { title, text } = req.body;
 
     if (title && text) {
         const newNote = {
@@ -25,6 +25,7 @@ router.post("/notes", (req, res) =>{
         };
 
 
+readAndAppend(newNote, "./db/db.json");
 res.status(200).json("added new note!");
     }else {
         res.status(500).json("Error");

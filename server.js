@@ -37,7 +37,7 @@ app.use(express.static('public'));
 // app.use('/', htmlRoutes);
 
 app.get('/api/notes', (req, res) => {
-  res.status(200).json(notes);
+  res.status(200).json(note);
 });
 
 app.get('/notes', (req, res) =>
@@ -45,20 +45,19 @@ res.sendFile(path.join(_direname, 'public/notes.html'))
 );
 
 
-app.post('/api/notes', (req, res) => {
+app.post('/api/note', (req, res) => {
   console.info (`${req.method} note added!`);
   
 
   const { title, text } = req.body;
 
   if(req.body){
-    const dbNote = {
+    const newNote = {
       title,
       text,
     };
 
-    note.push(dbNote);
-};
+    note.push(newNote);
 
 const textString = JSON.stringify(note);
 
@@ -76,7 +75,13 @@ const response = {
   body: newNote,
 };
 
+console.log(response);
+res.status(201).json(response);
+} else{
+  res.status(500).json('Post not added');
+}
 
+});
 
 app.get('/', (req,res) {
   res.sendFile(path.join(_direname, 'public/index.html'))

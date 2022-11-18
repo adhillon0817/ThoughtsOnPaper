@@ -27,50 +27,50 @@ app.use('/', htmlRoutes)
 
 
 
-app.get('/api/notes', (req, res) => {
-  res.status(200).json(notes);
-});
+// app.get('/api/notes', (req, res) => {
+//   res.status(200).json(notes);
+// });
 
 
 
 
-app.post('/api/notes', (req, res) => {
-  console.info (`${req.method} note added!`);
+// app.post('/api/notes', (req, res) => {
+//   console.info (`${req.method} note added!`);
   
 
-  const { title, text } = req.body;
+//   const { title, text } = req.body;
 
-  if(title && text){
-    const newNote = {
-      title,
-      text,
-    };
+//   if(title && text){
+//     const newNote = {
+//       title,
+//       text,
+//     };
 
-    notes.push(newNote);
+//     notes.push(newNote);
 
   
-const textString = JSON.stringify(notes);
+// const textString = JSON.stringify(notes);
 
-fs.writeFile(`./db/db.json`, textString, (err) =>
-err 
-  ? console.error(err)
-  : console.log(
-    `new note`
-)
-);
+// fs.writeFile(`./db/db.json`, textString, (err) =>
+// err 
+//   ? console.error(err)
+//   : console.log(
+//     `new note`
+// )
+// );
 
-const response = {
-  status: 'successful',
-  body: newNote,
-};
+// const response = {
+//   status: 'successful',
+//   body: newNote,
+// };
 
-console.log(response);
-res.status(201).json(response);
-} else{
-  res.status(500).json('Post not added');
-}
+// console.log(response);
+// res.status(201).json(response);
+// } else{
+//   res.status(500).json('Post not added');
+// }
 
-});
+// });
 
 // app.get('/', (req,res) => {
 //   res.sendFile(path.join(_direname, 'public/index.html'))
